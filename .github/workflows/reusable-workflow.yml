@@ -9,7 +9,7 @@ jobs:
   approval-gate:
     name: "Approval gate"
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment }}
+    environment: approval
     steps:
       - run: echo "Received approval. Moving on to next job..."
 
