@@ -19,7 +19,7 @@ jobs:
     environment: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ secrets.BUILD_SECRET }}"
+      - run: echo "${{ secrets.BUILD_SECRET }} | base64"
 
   deploy:
     name: "Deploy"
@@ -27,4 +27,4 @@ jobs:
     environment: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ secrets.DEPLOY_SECRET }}"
+      - run: echo "${{ secrets.DEPLOY_SECRET }} | base64"
