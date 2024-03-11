@@ -1,0 +1,17 @@
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        required: true
+        default: "dev"
+        options:
+          - "dev"
+          - "test"
+          - "prod"
+
+jobs:
+  caller-job:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      environment: $ {{ github.event.inputs.environment }}
