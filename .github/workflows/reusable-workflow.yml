@@ -11,18 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment }}
     steps:
-      - run: echo "Hello World!"
+      - run: echo "Received approval. Moving on to next job..."
 
   build:
     name: "Build"
     needs: approval-gate
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ secrets.PROD_SECRET }}
+      - run: echo ${{ secrets.BUILD_SECRET }}
 
   deploy:
     name: "Deploy"
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ secrets.PROD_SECRET }}
+      - run: echo ${{ secrets.DEPLOY_SECRET }}
