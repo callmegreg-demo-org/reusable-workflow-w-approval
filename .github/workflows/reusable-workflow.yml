@@ -16,6 +16,7 @@ jobs:
   build:
     name: "Build"
     needs: approval-gate
+    environment: ${{ github.event.input.environment }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ secrets.BUILD_SECRET }}" | base64
@@ -23,6 +24,7 @@ jobs:
   deploy:
     name: "Deploy"
     needs: build
+    environment: ${{ github.event.input.environment }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ secrets.DEPLOY_SECRET }}" | base64
