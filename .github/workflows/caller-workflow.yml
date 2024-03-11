@@ -13,5 +13,6 @@ on:
 jobs:
   caller-job:
     uses: ./.github/workflows/reusable-workflow.yml
+    secrets: inherit
     with:
       environment: $ {{ github.event.inputs.environment }}
