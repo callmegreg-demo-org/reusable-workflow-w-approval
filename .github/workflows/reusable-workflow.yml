@@ -18,11 +18,11 @@ jobs:
     needs: approval-gate
     runs-on: ubuntu-latest
     steps:
-      - run: echo "you made it to the build stage"
+      - run: echo ${{ secrets.PROD_SECRET }}
 
   deploy:
     name: "Deploy"
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: echo "you made it to the deploy stage"
+      - run: echo ${{ secrets.PROD_SECRET }}
