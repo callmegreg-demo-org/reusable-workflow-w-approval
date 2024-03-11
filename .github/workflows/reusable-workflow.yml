@@ -1,0 +1,28 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+
+jobs:
+  approval-gate:
+    name: "Approval gate"
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    steps:
+      - run: echo "Hello World!"
+
+  build:
+    name: "Build"
+    needs: approval-gate
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "you made it to the build stage"
+
+  deploy:
+    name: "Deploy"
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "you made it to the deploy stage"
