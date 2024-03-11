@@ -18,11 +18,11 @@ jobs:
     needs: approval-gate
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ secrets.BUILD_SECRET }}
+      - run: echo "${{ secrets.BUILD_SECRET }}"
 
   deploy:
     name: "Deploy"
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ secrets.DEPLOY_SECRET }}
+      - run: echo "${{ secrets.DEPLOY_SECRET }}"
